@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'authApp',
+    'TourApp',
 ]
 
 SIMPLE_JWT = {
@@ -73,9 +73,9 @@ REST_FRAMEWORK = {
     )
 }
 
-AUTH_USER_MODEL = 'authApp.User'
+AUTH_USER_MODEL = 'TourApp.User'
 
-ROOT_URLCONF = 'authProject.urls'
+ROOT_URLCONF = 'CityTourTravel.urls'
 
 TEMPLATES = [
     {
@@ -93,7 +93,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'authProject.wsgi.application'
+WSGI_APPLICATION = 'CityTourTravel.wsgi.application'
 
 
 # Database
@@ -109,7 +109,14 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-
+"""
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+"""
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
