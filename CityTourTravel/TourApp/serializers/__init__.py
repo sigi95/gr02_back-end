@@ -1,2 +1,2 @@
 #registrar serializers 
-from .usuario.userSerializer import UserSerializer
+from .usuarioSerializer import UsuarioSerializer

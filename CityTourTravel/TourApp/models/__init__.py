@@ -1,2 +1,2 @@
-from .usuario import Usuario
+from .usuario import User
 from .ciudad import Ciudad

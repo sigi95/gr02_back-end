@@ -1,12 +1,17 @@
+from django.db.models import base
 from rest_framework import routers, urlpatterns
-from .views.userCreateViewSet import UserCreateView
-from .views.userDetailView import UserDetailView
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from django.urls import path, include
 
+from .views.crearusuarioViewSet import CrearUsuarioViewSet
+from .views.tourViewSet import TourViewSet
+from .views.ciudadViewSet import CiudadViewSet
+
 
 router = routers.DefaultRouter()
-router.register('user', UserCreateView, basename='crearUsuarioView')
+router.register('registro', CrearUsuarioViewSet, basename='crearUsuarioView'),
+router.register('tour', TourViewSet, basename='TourView'),
+router.register('ciudad', CiudadViewSet, basename='Ciudadview')
 #router.register('login', TokenObtainPairView, basename='TokenloginView'),
 #router.register('refresh', TokenRefreshView, basename='TokenrecuperarsesionView'),
 
