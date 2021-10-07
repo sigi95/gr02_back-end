@@ -1,6 +1,6 @@
 from rest_framework import routers, urlpatterns
-from .views.usuario.userCreateViewSet import UserCreateView
-from .views.usuario.userDetailView import UserDetailView
+from .views.userCreateViewSet import UserCreateView
+from .views.userDetailView import UserDetailView
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from django.urls import path, include
 

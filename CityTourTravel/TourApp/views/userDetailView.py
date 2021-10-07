@@ -4,8 +4,8 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.backends import TokenBackend
 from rest_framework.permissions import IsAuthenticated
 
-from TourApp.models.usuario.user import User
-from TourApp.serializers.usuario.userSerializer import UserSerializer
+from TourApp.models.user import User
+from TourApp.serializers.userSerializer import UserSerializer
 
 class UserDetailView(generics.RetrieveAPIView):
     queryset = User.objects.all()

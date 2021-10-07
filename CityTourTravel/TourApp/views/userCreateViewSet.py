@@ -3,8 +3,8 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 #models
-from TourApp.models.usuario.user import User
-from TourApp.serializers.usuario.userSerializer import UserSerializer
+from TourApp.models.user import User
+from TourApp.serializers.userSerializer import UserSerializer
 
 class UserCreateView(viewsets.ModelViewSet):
     queryset = User.objects.all()
