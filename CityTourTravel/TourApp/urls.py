@@ -7,19 +7,15 @@ from .views.crearusuarioViewSet import CrearUsuarioViewSet
 from .views.tourViewSet import TourViewSet
 from .views.ciudadViewSet import CiudadViewSet
 from .views.carritoViewSet import CarritoViewSet
-from .views.userDetailView import UserDetailView
 
 router = routers.DefaultRouter()
-router.register('registro', CrearUsuarioViewSet, basename='crearUsuarioView'),
 router.register('tour', TourViewSet, basename='TourView'),
 router.register('ciudad', CiudadViewSet, basename='Ciudadview'),
 router.register('carrito', CarritoViewSet, basename='CarritoView')
-#router.register('login', TokenObtainPairView, basename='TokenloginView'),
-#router.register('refresh', TokenRefreshView, basename='TokenrecuperarsesionView'),
 
 urlpatterns = [
     path('api/', include(router.urls)),
     path('api/login/', TokenObtainPairView.as_view()),
     path('api/refresh/', TokenRefreshView.as_view()),
-    #path('api/usuario/<int:pk>/', UserDetailView.as_view())
+    path('api/registro/', CrearUsuarioViewSet.as_view())
 ]

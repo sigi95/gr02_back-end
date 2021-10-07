@@ -9,8 +9,7 @@ class Tour(models.Model):
     tour_fechaHoraInicio = models.DateTimeField(null=False, default='2021-01-01T00:00:00Z')
     tour_fechaHoraFin = models.DateTimeField(null=False, default='2021-01-02T00:00:00Z')
     tour_duracionHoras = models.IntegerField(null=False, blank=False)
-    #mediante una tupla creo las opciones a escoger en el campo de transporte
-    #al igual para hospedaje
+    
     Transporte = [
         ('PIE','A pie'),
         ('BICI','Bicicleta'),
