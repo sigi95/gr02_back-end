@@ -4,19 +4,15 @@ USE cityTourTravel;
 
 CREATE TABLE usuario(
 	usu_nombreUsuario char(60) NOT NULL PRIMARY KEY,
+    usu_password char(20) NOT NULL,
     usu_nombre  char(20) NOT NULL,
     usu_apellido1 char(40) NOT NULL,
     usu_apellido2 char(40),
     usu_email  char(60) NOT NULL,
-    usu_telefonoCelular int,
+    usu_telefonoCelular bigint,
     usu_pais char(20),
-    usu_ciudad char(20)
-);
-
-CREATE TABLE cuenta(
-	usu_nombreUsuario char(60) NOT NULL PRIMARY KEY,
-    cuenta_password char(20) NOT NULL,
-    FOREIGN  KEY(usu_nombreUsuario)REFERENCES usuario(usu_nombreUsuario)
+    usu_ciudad char(20),
+    usu_Direccion char(60)
 );
 
 CREATE TABLE ciudad(
@@ -27,7 +23,7 @@ CREATE TABLE ciudad(
 CREATE TABLE tour(
 	tour_nombre char(60) NOT NULL PRIMARY KEY,
     ciu_nombre char(20) NOT NULL,
-    tour_descripcion char(250) NOT NULL,
+    tour_descripcion char(255) NOT NULL,
     tour_precio double NOT NULL,
     tour_fechaHoraInicio datetime DEFAULT '2021-01-01 00:00:00',
     tour_fechaHoraFin datetime DEFAULT '2021-01-02 00:00:00',
