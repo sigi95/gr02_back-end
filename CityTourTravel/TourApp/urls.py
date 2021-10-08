@@ -3,7 +3,7 @@ from rest_framework import routers, urlpatterns
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from django.urls import path, include
 
-from .views.crearusuarioViewSet import CrearUsuarioViewSet
+from .views.crearusuarioViewSet import CrearUsuarioViewSet, DetalleUsuarioView, EditarUsuarioView, EliminarUsuarioView
 from .views.tourViewSet import TourViewSet
 from .views.ciudadViewSet import CiudadViewSet
 from .views.carritoViewSet import CarritoViewSet
@@ -17,5 +17,8 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('api/login/', TokenObtainPairView.as_view()),
     path('api/refresh/', TokenRefreshView.as_view()),
-    path('api/registro/', CrearUsuarioViewSet.as_view())
+    path('api/registro/', CrearUsuarioViewSet.as_view()),
+    path('api/usuario/<int:pk>/', DetalleUsuarioView.as_view()),
+    path('api/editar/<int:pk>/', EditarUsuarioView.as_view()),
+    path('api/eliminar/<int:pk>/', EliminarUsuarioView.as_view())
 ]
