@@ -22,8 +22,16 @@ class UserManager(BaseUserManager):
         return usuario
 
 class User(AbstractBaseUser, PermissionsMixin):
-    #id = models.BigAutoField(primary_key=True)
-    usu_nombreUsuario = models.CharField('Nombre usuario', primary_key=True, max_length=60, null=False, blank=False, unique=True)
+    #las opciones para el campo tipoId
+    Tipo_identificacion = [
+        ('CC', 'Cédula de Ciudadanía'),
+        ('CE', 'Cédula de Extranjeria'),
+        ('NIT', 'NIT')
+    ]
+
+    id = models.BigIntegerField('Identificacion',primary_key=True, null=False)
+    usu_tipoId = models.CharField('Tipo identificacion', max_length=50, null=False, choices=Tipo_identificacion)
+    usu_nombreUsuario = models.CharField('Nombre usuario', max_length=60, null=False, blank=False, unique=True)
     password = models.CharField('Contraseña', max_length=256, null=False)
     usu_nombre = models.CharField('Nombres', max_length=20, null=False)
     usu_apellido1 = models.CharField('Primer Apellido', max_length=40, null=False)

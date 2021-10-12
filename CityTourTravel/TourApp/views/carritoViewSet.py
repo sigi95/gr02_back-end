@@ -15,6 +15,7 @@ class CarritoView(views.APIView):
         serializer.save()
         return Response(serializer.validated_data, status=status.HTTP_201_CREATED)
 
+class CarritoGetView(views.APIView):
     def get(self, request, pk):
         carrito_id = list(Carrito.objects.filter(id=pk).values()) #verifico si existen usuarios
         if len(carrito_id) > 0:

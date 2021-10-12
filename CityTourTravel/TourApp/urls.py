@@ -8,7 +8,7 @@ from TourApp.serializers.carritoSerializer import CarritoSerializer
 from .views.usuarioView import CrearUsuarioViewSet, DetalleUsuarioView, EditarUsuarioView, EliminarUsuarioView, ListarUsuarioView
 from .views.tourViewSet import TourCiudadGetView, TourIdGetView, TourViewSet
 from .views.ciudadView import CiudadGetView, CiudadView
-from .views.carritoViewSet import CarritoView
+from .views.carritoViewSet import CarritoGetView, CarritoView
 
 router = routers.DefaultRouter()
 router.register('tour', TourViewSet, basename='TourView')
@@ -26,10 +26,12 @@ urlpatterns = [
     path('api/ciudad/', CiudadView.as_view()),
     #path('api/registro_tour/', TourViewSet.as_view()),
     path('api/carrito/', CarritoView.as_view()),
+    path('api/carrito/<int:pk>/', CarritoGetView.as_view()),
     path('api/tour', TourCiudadGetView.as_view()),
     path('api/tour_id/<int:pk>', TourIdGetView.as_view()),
     path('api/carritoEditar/<int:pk>/', CarritoView.as_view()),
-    path('api/carritoEliminar/<int:pk>/', CarritoView.as_view())
+    path('api/carritoEliminar/<int:pk>/', CarritoView.as_view()),
+    #path('api/compras/', CompraView.as_view())
     #path('api/tour/<tour_nombre>/', TourView.as_view())
     #path('api/ciudad/<int:id>/', CiudadGetView.as_view())
 ]

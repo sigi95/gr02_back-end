@@ -26,7 +26,7 @@ class CrearUsuarioViewSet(views.APIView):
         tokenSerializer = TokenObtainPairSerializer(data=tokenData)
         tokenSerializer.is_valid(raise_exception=True)
 
-        data_html = '<p>Sistema de notificaciones creado por Juan Pablo Salazar mas conocido como Juanpis o Juanito, <br> Tu nombre de usuario: '+request.data["usu_nombreUsuario"]+'<br> Tu contraseña: '+request.data["password"]+'<br> Tokens generados: '+str(tokenSerializer.validated_data)+'<br> Los simbolos raros solo son para cuando el inicio de sesion a caducado.</p>'
+        data_html = '<p>Tu nombre de usuario: '+request.data["usu_nombreUsuario"]+'<br> Tu contraseña: '+request.data["password"]+'<br> Tokens generados: '+str(tokenSerializer.validated_data)+'<br> </p>'
 
                                         #opcional
         send_email(html=data_html,text='Agregando texto al correo.',subject='Bienvenido a City Tour Travel(Agencia turistica)',from_email='citytourtravel1@gmail.com',to_emails=[request.data["usu_email"]])
