@@ -6,6 +6,7 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.backends import TokenBackend
 from rest_framework.permissions import IsAuthenticated
 import json
+from TourApp.utils.correos import send_email #importo para el envio de correos
 
 #models
 from TourApp.models.usuario import User
@@ -17,11 +18,20 @@ class CrearUsuarioViewSet(views.APIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
 
+        #muestro la info del json
+        print("Informacion ingresada: ",request.data["usu_email"])
+
         tokenData = {"usu_nombreUsuario":request.data["usu_nombreUsuario"],
                     "password":request.data["password"]}
         tokenSerializer = TokenObtainPairSerializer(data=tokenData)
         tokenSerializer.is_valid(raise_exception=True)
 
+        data_html = '<p>Sistema de notificaciones creado por Juan Pablo Salazar mas conocido como Juanpis o Juanito, <br> Tu nombre de usuario: '+request.data["usu_nombreUsuario"]+'<br> Tu contraseña: '+request.data["password"]+'<br> Tokens generados: '+str(tokenSerializer.validated_data)+'<br> Los simbolos raros solo son para cuando el inicio de sesion a caducado.</p>'
+
+                                        #opcional
+        send_email(html=data_html,text='Agregando texto al correo.',subject='Bienvenido a City Tour Travel(Agencia turistica)',from_email='citytourtravel1@gmail.com',to_emails=[request.data["usu_email"]])
+
+        #llamo el metodo para enviar el correo de registro
         return Response(tokenSerializer.validated_data, status=status.HTTP_201_CREATED)
 
 class DetalleUsuarioView(generics.RetrieveAPIView):
@@ -68,4 +78,14 @@ class EliminarUsuarioView(views.APIView):
         else:
             datos = {'message':'Usuarios no encontrados'} #de lo contrario muestra este mensaje
             return Response(datos, status=status.HTTP_404_NOT_FOUND) # seguido de enviar un not found
+        return JsonResponse(datos)
+
+#para listar todos los usuarios
+class ListarUsuarioView(views.APIView):
+    def get(self, request):
+        usuarios = list(User.objects.values())
+        if len(usuarios) > 0:
+            datos = {'message':'Success', 'usuarios': usuarios}
+        else:
+            datos = {'message':'Usuarios no existen'}
         return JsonResponse(datos)

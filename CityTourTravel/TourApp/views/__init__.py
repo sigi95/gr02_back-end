@@ -1,6 +1,5 @@
 #registrar vistas 
-from .crearusuarioViewSet import CrearUsuarioViewSet
-from .ciudadViewSet import CiudadViewSet
-from .tourViewSet import TourViewSet
-from .carritoViewSet import CarritoViewSet
-from .crearusuarioViewSet import DetalleUsuarioView
+from .usuarioView import CrearUsuarioViewSet, DetalleUsuarioView, EditarUsuarioView, EliminarUsuarioView
+from .ciudadView import CiudadView
+from .tourViewSet import TourViewSet, TourCiudadGetView#, TourView
+from .carritoViewSet import CarritoView

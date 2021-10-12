@@ -5,4 +5,4 @@ from TourApp.models.carrito import Carrito
 class CarritoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Carrito
-        fields = '__all__'
+        fields = ['cc_id', 'cc_usu_nombreUsuario','cc_tour_nombre','cc_numeroPersonas','cc_precioTotal']

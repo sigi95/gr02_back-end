@@ -22,14 +22,14 @@ class UserManager(BaseUserManager):
         return usuario
 
 class User(AbstractBaseUser, PermissionsMixin):
-    id = models.BigAutoField(primary_key=True)
-    usu_nombreUsuario = models.CharField('Nombre usuario', max_length=60, null=False, blank=False, unique=True)
+    #id = models.BigAutoField(primary_key=True)
+    usu_nombreUsuario = models.CharField('Nombre usuario', primary_key=True, max_length=60, null=False, blank=False, unique=True)
     password = models.CharField('Contraseña', max_length=256, null=False)
-    usu_nombre = models.CharField('Nombre', max_length=20, null=False)
+    usu_nombre = models.CharField('Nombres', max_length=20, null=False)
     usu_apellido1 = models.CharField('Primer Apellido', max_length=40, null=False)
     usu_apellido2 = models.CharField('Segundo Apellido', max_length=40, null=False)
     usu_email = models.EmailField('Email', max_length=60, null=False)
-    usu_telefonoCelular = models.IntegerField('Telefono Celular', null=False)
+    usu_telefonoCelular = models.CharField('Telefono Celular', max_length=20, null=False)
     usu_pais = models.CharField('Pais', max_length=20, null=False)
     usu_ciudad = models.CharField('Ciudad', max_length=20, null=False)
 
