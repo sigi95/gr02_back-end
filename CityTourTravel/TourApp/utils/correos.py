@@ -1,4 +1,4 @@
-#citytourtravel1@gmail.com
+#correo electronico de donde se envian las notificaciones: citytourtravel1@gmail.com
 #citytourtravel2021
 from email.message import MIMEPart
 import smtplib

@@ -1,7 +1,6 @@
 from django.http.response import JsonResponse
 from rest_framework import viewsets, views, status
 from rest_framework.response import Response
-from TourApp.models.tour import Tour
 
 from TourApp.models.ciudad import Ciudad
 from TourApp.serializers.ciudadSerializer import CiudadSerializer
@@ -21,12 +20,11 @@ class CiudadView(views.APIView):
         else:
             datos = {'message':'No hay datos registrados'}
             return Response(datos, status=status.HTTP_404_NOT_FOUND)
-        return JsonResponse(datos)
 
 class CiudadGetView(views.APIView):
     def get(self, reques, id):
         if id>0:
             ciudades_ = Ciudad.objects.values()
-            tour = Tour.objects.get(ciudades_.ciu_id)
+            tour = Ciudad.objects.get(ciudades_.ciu_id)
             datos = tour[0]
         return JsonResponse(datos)
