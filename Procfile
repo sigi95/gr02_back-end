@@ -1,1 +1,0 @@
-web: gunicorn --bind 0.0.0.0:8000 --pythonpath app CityTourTravel.CityTourTravel.wsgi:application
