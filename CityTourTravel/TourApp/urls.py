@@ -21,9 +21,9 @@ urlpatterns = [
     #url para ciudad
     path('api/ciudad/registro/', CiudadView.as_view()), #crea las ciudades
     #url para tours
-    path('api/tour/registro/', TourViewSet.as_view()),
+    path('api/tour/registro/', TourViewSet.as_view()),#registrar tour
     path('api/tour', TourCiudadGetView.as_view()), #usa el filtro para buscar por ciudad, se le agrega ?ciu_nombre=nombre de la ciudad
-    path('api/tourId/<int:pk>', TourIdGetView.as_view()),#buscar tour por id
+    path('api/tour/<int:pk>/', TourIdGetView.as_view()),#buscar tour por id
     #url para carrito
     path('api/carrito/registro/', CarritoView.as_view()), #registrar los tours que se piden
     path('api/carrito/<int:pk>/', CarritoGetView.as_view()), #listar lo que esta en el carrito por id

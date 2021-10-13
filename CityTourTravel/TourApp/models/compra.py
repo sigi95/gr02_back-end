@@ -26,5 +26,5 @@ class Compras(models.Model):
     com_confirmarPago = models.CharField('Confirmar pago', choices=Confirmar, max_length=20, default='Por confirmar', null=True)
     com_fechaPago = models.DateTimeField('Fecha Pago', null=True, default='2021-01-02T00:00:00Z')
 
-def __str__(self):
-    return self.usu_id
+    def __int__(self):
+        return self.usu_id
