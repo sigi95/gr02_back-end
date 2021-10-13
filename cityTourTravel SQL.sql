@@ -6,16 +6,16 @@ USE cityTourTravel;
 CREATE TABLE usuario(
 	usu_id bigint NOT NULL PRIMARY KEY,
     usu_tipoId enum ('Cédula de Ciudadanía', 'Cédula de Extranjería', 'NIT') NOT NULL,
-    usu_nombreUsuario char(60) NOT NULL,
-    usu_password char(20) NOT NULL,
-    usu_nombre  char(20) NOT NULL,
+    usu_nombreUsuario char(20) NOT NULL,
+    usu_password char(255) NOT NULL,
+    usu_nombre  char(30) NOT NULL,
     usu_apellido1 char(40) NOT NULL,
     usu_apellido2 char(40),
-    usu_email  char(60) NOT NULL,
-    usu_telefonoCelular bigint,
-    usu_pais char(20),
-    usu_ciudad char(20),
-    usu_Direccion char(60)
+    usu_email  char(100) NOT NULL,
+    usu_telefonoCelular bigint NOT NULL,
+    usu_pais char(20) NOT NULL,
+    usu_ciudad char(20) NOT NULL,
+    usu_Direccion char(100) NOT NULL
 );
 
 INSERT INTO usuario(usu_tipoId, usu_id, usu_nombreUsuario, usu_password, usu_nombre, usu_apellido1, usu_apellido2, usu_email, usu_telefonoCelular, usu_pais, usu_ciudad, usu_Direccion) VALUES ('Cédula de Ciudadanía', 123456789, 'PepitoP23', 'pepito45&', 'Pepito', 'Perez', 'Perez', 'pepitoperez@correo.com', 3158995636,'Colombia', 'Bogotá', 'Calle falsa 123');
@@ -35,7 +35,7 @@ CREATE TABLE tour(
 	tour_nombre char(80) NOT NULL PRIMARY KEY,
     ciu_nombre char(20) NOT NULL,
     tour_descripcion char(255) NOT NULL,
-    tour_precio double NOT NULL,
+    tour_precio float NOT NULL,
     tour_fechaHoraInicio datetime DEFAULT '2021-01-01 00:00:00',
     tour_fechaHoraFin datetime DEFAULT '2021-01-02 00:00:00',
     tour_duracionHoras int NOT NULL,
@@ -72,16 +72,16 @@ INSERT INTO tour(tour_nombre, ciu_nombre, tour_descripcion, tour_precio, tour_fe
 y alberga un museo de arte moderno en el que se llevan a cabo exposiciones temporales', 100000, '2021-10-31 09:00:00', '2021-10-31 16:00:00', 7, 'A pie', '2 refrigerios, 1 almuerzo y 1 botella de agua', 'No', 2, 'Parque Cúcuta 300 años', 'Centro Cultural Torre del Reloj');
 
 
-CREATE TABLE carritoCompras(
+CREATE TABLE carrito(
 	usu_id bigint NOT NULL PRIMARY KEY,
     tour_nombre char(60) NOT NULL,
-    carritoCompras_numeroPersonas int NOT NULL,
-    carritoCompras_precioTotal double NOT NULL,
+    car_numeroPersonas int NOT NULL,
+    car_precioTotal float NOT NULL,
     FOREIGN KEY(usu_id)REFERENCES usuario(usu_id),
     FOREIGN KEY(tour_nombre)REFERENCES tour(tour_nombre)
 );
 
-INSERT INTO carritoCompras(usu_id, tour_nombre, carritoCompras_numeroPersonas, carritoCompras_precioTotal) VALUES (123456789, 'Tour al Monumento Cristo Rey', 1, 100000);
+INSERT INTO carrito(usu_id, tour_nombre, car_numeroPersonas, car_precioTotal) VALUES (123456789, 'Tour al Monumento Cristo Rey', 1, 100000);
 
 CREATE TABLE compra(
 	com_id int AUTO_INCREMENT PRIMARY KEY,
@@ -90,7 +90,7 @@ CREATE TABLE compra(
     com_numeroCuenta bigint NOT NULL,
     com_confirmarPago enum('Sí', 'No', 'Por confirmar') DEFAULT 'Por confirmar',
     com_fechaPago datetime DEFAULT '2021-01-01 00:00:00',
-    FOREIGN KEY(usu_id)REFERENCES carritoCompras(usu_id)
+    FOREIGN KEY(usu_id)REFERENCES carrito(usu_id)
 );
 
 INSERT INTO compra(usu_id, com_metodoPago, com_numeroCuenta) VALUES (123456789, 'PayU', 1234567890);
