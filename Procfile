@@ -1,2 +1,1 @@
-web: gunicorn CityTourTravel.CityTourTravel.wsgi
-
+web: gunicorn CityTourTravel.CityTourTravel:TourApp -b xx.xxx.xxx.xx:8000
