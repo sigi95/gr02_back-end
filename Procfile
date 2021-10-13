@@ -1,1 +1,1 @@
-web: gunicorn CityTourTravel/CityTourTravel.wsgi
+web: gunicorn CityTourTravel.CityTourTravel.wsgi
