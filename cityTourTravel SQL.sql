@@ -82,15 +82,3 @@ CREATE TABLE carrito(
 );
 
 INSERT INTO carrito(usu_id, tour_nombre, car_numeroPersonas, car_precioTotal) VALUES (123456789, 'Tour al Monumento Cristo Rey', 1, 100000);
-
-CREATE TABLE compra(
-	com_id int AUTO_INCREMENT PRIMARY KEY,
-	usu_id bigint NOT NULL,
-    com_metodoPago enum('PayU', 'Visa', 'MasterCard', 'American Express', 'Diners Club', 'PSE') NOT NULL,
-    com_numeroCuenta bigint NOT NULL,
-    com_confirmarPago enum('Sí', 'No', 'Por confirmar') DEFAULT 'Por confirmar',
-    com_fechaPago datetime DEFAULT '2021-01-01 00:00:00',
-    FOREIGN KEY(usu_id)REFERENCES carrito(usu_id)
-);
-
-INSERT INTO compra(usu_id, com_metodoPago, com_numeroCuenta) VALUES (123456789, 'PayU', 1234567890);
